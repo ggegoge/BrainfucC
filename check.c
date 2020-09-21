@@ -27,6 +27,7 @@ int check(char * source) {
   
   while (*source != '\0') {
     /* skip comments */
+    printf("%c", *source);
     if (*source == '#')       
       while ((*source!='\n') && (*source != '\0')) {
         source++;
@@ -54,9 +55,13 @@ int check(char * source) {
       return -idx_point;
     }
     i++;
-    source++;      
+    source++;
   }
   /* return the index of last unmatched [ or ] */
+  if (idx_par_clos == 0)
+    idx_par_clos++;
+  if (idx_par_op == 0)
+    idx_par_op++;
   if (l_parenth != r_parenth) {
     return l_parenth > r_parenth ? idx_par_op : idx_par_clos;
   }
