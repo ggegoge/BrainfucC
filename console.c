@@ -11,7 +11,7 @@ void interpreter(char memory[SIZE]) {
   size_t cmnd_len = 100;
   char * cmnd = (char *) malloc(cmnd_len * sizeof(char));
   char * p;
-  int i=0, j;
+  int i=0, j, len;
   int error;
   /* intro */
   printf("AN INTERACTIVE BRAINFUC");
@@ -49,11 +49,10 @@ void interpreter(char memory[SIZE]) {
     printf("|> ");
     printf("\033[0m");
     getline(&cmnd, &cmnd_len, stdin);
-    
     /* check whether the command aint too long */
     if (cmnd == NULL)
       exit(1);
-    
+    len = strlen(cmnd);
     p = cmnd; 
     if (*cmnd == 'q')
       return;
@@ -68,15 +67,14 @@ void interpreter(char memory[SIZE]) {
       printf("\033[0m");
       
       /* exec */
-      p = command(memory+i, &cmnd);
-      
+      p = command(memory+i, &cmnd);      
       i = p-memory;
       /* index out of range vel seg fault */
       if ((i<0) || (i>= SIZE)) {
         printf("\033[1;31m"); 
         printf("ERRONOUS COMMAND\n");
         printf("\033[0;31m");
-        show_error(cmnd-cmnd_len, -cmnd_len);
+        show_error(cmnd-len, -len+2);
         printf("\033[0m");
         i=0;
       }        
@@ -103,6 +101,7 @@ void interpreter(char memory[SIZE]) {
       printf("\033[0m");      
     }
   } while (*cmnd != 'q');
+  free(cmnd);
 }
 
 
