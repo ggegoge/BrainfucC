@@ -33,9 +33,12 @@ void from_file(char memory[SIZE], char * path, int show) {
   if (buffer)  {
     error = check(buffer);
     if (error) {
+      printf("\033[1;31m");
       printf("AN ERROR FOUND\n");
+      printf("\033[0;31m");
       show_error(buffer, error);
-      perror("INVALID SOURCE CODE\n");
+      printf("\033[0m");      
+      printf("INVALID SOURCE CODE\n");
       printf("DO YOU WANT TO SKIP THE ERROR? (y/n)\n");
       scanf("%c", &skip);
       /* you can skip errors if u really want to */
@@ -56,9 +59,12 @@ void from_file(char memory[SIZE], char * path, int show) {
 void from_cmnd(char memory[SIZE], char ** source) {
   int error = check(*source);
   if (error) {
+    printf("\033[1;31m");
     printf("AN ERROR FOUND\n");
+    printf("\033[0;31m");
     show_error(*source, error);
-    perror("INVALID SOURCE CODE\n");
+    printf("\033[0m");      
+    printf("INVALID SOURCE CODE\n");
     exit(EXIT_FAILURE);
   }
   else 
