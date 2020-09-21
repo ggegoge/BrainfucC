@@ -74,7 +74,7 @@ int check(char * source) {
 or under the possible seg-faulting */
 void show_error(char * source, int error) {
   int i;
-  char traceback[50];
+  char traceback[60];
   if (error > 0)
     strcpy(traceback, "DANGLING PARENTHESES AT %d\n");
   else if (error < 0) {
