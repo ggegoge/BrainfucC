@@ -27,7 +27,6 @@ int check(char * source) {
   
   while (*source != '\0') {
     /* skip comments */
-    printf("%c", *source);
     if (*source == '#')       
       while ((*source!='\n') && (*source != '\0')) {
         source++;
