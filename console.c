@@ -70,7 +70,7 @@ void interpreter(char memory[SIZE]) {
       p = command(memory+i, &cmnd);      
       i = p-memory;
       /* index out of range vel seg fault */
-      if ((i<0) || (i>= SIZE)) {
+      if (i < 0 || i >= SIZE) {
         printf("\033[1;31m"); 
         printf("ERRONOUS COMMAND\n");
         printf("\033[0;31m");

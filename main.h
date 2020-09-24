@@ -23,6 +23,9 @@ char * command(char * p, char ** source);
 char * loop(char * p, char ** source);
 void print(char * p);
 void assign(char ** p);
+/* nonstandard bf */
+void printnum(char * p);
+void assignnum(char ** p);
 
 
 #endif 

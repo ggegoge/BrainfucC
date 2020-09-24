@@ -8,8 +8,10 @@
    <command> ::= '+' | '-' | '>' | '<' | '.' | ',' | <loop>
    <loop> ::= '[' { <command> } ']'
 
-and in this implementation vel. dialect you can use another command - '!'
-'!' shows memory right from the current pointer's position.
+and in this implementation vel. dialect you can use another command - '?'
+it shows memory right from the current pointer's position.
+And also '!' prints value under the current cell as an unsgined 
+inty char ie. a number from 0 to 255
 
 Also `#` marks comments - the interpreter will skip everything after a #
 on a given line
@@ -40,12 +42,18 @@ char * command(char * p, char ** source) {
       p = loop(p, source);
     else if (**source == ']') 
       break;
-    else if (**source == '!') {
+    /* NONSTANDARD YET HELPFUL COMMANDS */
+    else if (**source == '?') {
       printf("\n");
       show_memory(p);
     }
-    ++*source;
+    else if (**source == '!')
+      printnum(p);
+    else if (**source =='^')
+      assignnum(&p);
+    ++*source;    
   }
+  
   return p;
 }
 
@@ -81,3 +89,11 @@ void assign(char ** p) {
   scanf("%c", *p);
 }
 
+/* nonstandard bf - numeral output and input */
+void printnum(char * p) {
+  printf("%u", (unsigned char)*p);
+}
+
+void assignnum(char ** p) {
+  scanf("%d", (int *)*p);
+}
