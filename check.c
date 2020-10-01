@@ -23,7 +23,7 @@ int check(char * source) {
   int i = 0;
   int r_parenth = 0, l_parenth = 0;
   int l_point = 0, r_point = 0;
-  int idx_par_clos, idx_par_op, idx_point;
+  int idx_par_clos=0, idx_par_op=0, idx_point=0;
   
   while (*source != '\0') {
     /* skip comments */

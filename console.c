@@ -8,8 +8,8 @@
 
 
 void interpreter(char memory[SIZE]) {
-  size_t cmnd_len = 100;
-  char * cmnd = (char *) malloc(cmnd_len * sizeof(char));
+  size_t cmnd_len = 0;
+  char * cmnd = NULL;
   char * p;
   int i=0, j, len;
   int error;
@@ -48,14 +48,15 @@ void interpreter(char memory[SIZE]) {
     printf("\033[0;32m"); 
     printf("|> ");
     printf("\033[0m");
-    getline(&cmnd, &cmnd_len, stdin);
+    len = getline(&cmnd, &cmnd_len, stdin);
     /* check whether the command aint too long */
     if (cmnd == NULL)
       exit(1);
-    len = strlen(cmnd);
+    /* len = strlen(cmnd); */
     p = cmnd; 
-    if (*cmnd == 'q')
-      return;
+    if (*cmnd == 'q') {
+      break;
+    }
     if (*cmnd == '\n')
       continue;
     
@@ -91,6 +92,7 @@ void interpreter(char memory[SIZE]) {
       printf("\033[0m");
       
       /* clean_memory(memory); */
+      cmnd = cmnd-len;
       printf("\n");
     }
     else {
@@ -99,7 +101,7 @@ void interpreter(char memory[SIZE]) {
       printf("\033[0;31m");
       show_error(cmnd, error);
       printf("\033[0m");      
-    }
+    }        
   } while (*cmnd != 'q');
   free(cmnd);
 }

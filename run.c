@@ -50,6 +50,7 @@ void from_file(char memory[SIZE], char * path, int show) {
     printf("EXECUTING SOURCE CODE FROM `%s`\nOUTPUT:\n-------\n", path);
     command(memory, &buffer);
     printf("\n-------");
+    free(buffer-length);
   }
   else
     printf("INVALID DATA\n");

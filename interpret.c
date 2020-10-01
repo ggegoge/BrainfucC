@@ -10,8 +10,11 @@
 
 and in this implementation vel. dialect you can use another command - '?'
 it shows memory right from the current pointer's position.
+
 And also '!' prints value under the current cell as an unsgined 
-inty char ie. a number from 0 to 255
+inty char ie. a number from 0 to 255 (see the function printnum).
+
+You can also do the same thing but with the input with "^" (assignnum).
 
 Also `#` marks comments - the interpreter will skip everything after a #
 on a given line
