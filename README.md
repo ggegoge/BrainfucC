@@ -4,12 +4,16 @@ a simple brainfuck interpreter written in C that can be used in an interactive w
 ## compile
 `gcc -o bf *.c`
 
+#### execute
+you can either use the plain executable file so do stuff like `./bf` or make yourself an __alias__ in your shell. 
+Something along the lines of: `alias bf="[absolute path]/bf/bf"` so that you can write `bf` in your terminal anywhere you are and it will result in executing the compiled file provided under the absolute path. In the following paragraphs I shall use the aliased version but I guess you know the difference.
+
 ## usage
 you can either
 
-* pass commands via the terminal eg. `./bf "++++[>++++[>+++<-]<-]>>++.-.++.++++."`
-* execute brainfuck code from a source file `./bf -f examples/hello.bf`. it is possible to add `-s` after the file's path to tell the interpreter to show the source file before executing it
-* use an interactive interpreter/console `./bf -i`
+* pass commands via the terminal eg. `bf "++++[>++++[>+++<-]<-]>>++.-.++.++++."`
+* execute brainfuck code from a source file `bf -f examples/hello.bf`. it is possible to add `-s` after the file's path to tell the interpreter to show the source file before executing it
+* use an interactive interpreter/console `bf` or `bf -i`
 
 **the interactive console mode:**
 
