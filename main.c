@@ -8,7 +8,9 @@ char memory[SIZE];  /* allocate cells */
 
 int main(int argc, char ** argv) {
   if (argc < 2) {
-    printf("NO COMMANDS\nUSE `./bf -h` FOR HELP\n");
+    printf("USE `bf -h` FOR HELP\n");
+    printf("------------\n");
+    interpreter(memory);
     return 0;
   }
   /* options selected by adding '-' */
@@ -29,13 +31,13 @@ int main(int argc, char ** argv) {
       printf("\nYOU CAN:\n");
       printf("1. INTERPRET CODE FROM COMMAND LINE BY SIMPLY ");
       printf("PASSING IT IN QUOTES WHEN CALLING THE INTERPRETER\n");
-      printf("\tEG. `./bf \"++++[>++++[>+++<-]<-]>>++.-.++.++++.\"`\n");
+      printf("\tEG. `bf \"++++[>++++[>+++<-]<-]>>++.-.++.++++.\"`\n");
       printf("2. INTERPRET CODE FROM A SOURCE FILE JUST WRITING IT'S ");
       printf("NAME AFTER A -f FLAG WHEN CALLING THE INTERPRETER\n");
-      printf("\tEG. `./bf -f example.bf`\n\tOR IF YOU WANT TO SEE THE SOURCE CODE\n");
-      printf("\tEG. `./bf -f example.bf -s`\n");
-      printf("3. ADD A -i FLAG TO RUN AN INTERACTIVE BF CONSOLE\n");
-      printf("\tEG. `./bf -i`\n");
+      printf("\tEG. `bf -f example.bf`\n\tOR IF YOU WANT TO SEE THE SOURCE CODE\n");
+      printf("\tEG. `bf -f example.bf -s`\n");
+      printf("3. ADD AN OPTIONAL -i FLAG TO RUN AN INTERACTIVE BF CONSOLE\n");
+      printf("\tEG. `bf -i` OR `bf`\n");
     }
     /* execute from file */
     else if (argv[1][1] == 'f') {
