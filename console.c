@@ -13,41 +13,13 @@ void interpreter(char memory[SIZE]) {
   char * p;
   int i=0, j, len;
   int error;
-  /* intro */
-  printf("AN INTERACTIVE BRAINFUC");
-  printf("\033[1;34m");
-  printf("C");
-  printf("\033[0m");
-  printf(" CONSOLE\n\n");
-  /* |> */
-  printf("\033[0;32m"); 
-  printf("|> ");
-  printf("\033[0m");
-  printf("- INPUT\n");
-  /* |< */
-  printf("\033[0;36m");
-  printf("|< ");
-  printf("\033[0m");
-  printf("- OUTPUT\n");
-  /* @ */
-  printf("\033[0;33m");
-  printf("@  ");
-  printf("\033[0m");
-  printf("- CURRENT MEMORY STATUS. DISPLAYED AS: ");
-  printf("\033[0;33m");
-  printf("value@adress\n");
-  printf("\033[0m");
-  /* ^ */
-  printf("\033[1;35m");
-  printf("^  ");
-  printf("\033[0m");
-  printf("- CURRENT POINTER POSITION\n");
   
-  printf("\nUSE q OR CTRL-C TO QUIT\n\nEXECUTE WITH ENTER\n---\n");
+  intro();
   do {
-    printf("\033[0;32m"); 
+    printf("\033[0;32m");
     printf("|> ");
     printf("\033[0m");
+    fflush(stdout);
     len = getline(&cmnd, &cmnd_len, stdin);
     /* check whether the command aint too long */
     if (cmnd == NULL)
@@ -65,7 +37,7 @@ void interpreter(char memory[SIZE]) {
     if (error <= 0) {
       printf("\033[0;36m");
       printf("|< ");
-      printf("\033[0m");
+      printf("\033[0m"); 
       
       /* exec */
       p = command(memory+i, &cmnd);      
@@ -104,6 +76,40 @@ void interpreter(char memory[SIZE]) {
     }        
   } while (*cmnd != 'q');
   free(cmnd);
+}
+
+void intro(void) {
+  /* intro */
+  printf("AN INTERACTIVE BRAINFUC");
+  printf("\033[1;34m");
+  printf("C");
+  printf("\033[0m");
+  printf(" CONSOLE\n\n");
+  /* |> */
+  printf("\033[0;32m"); 
+  printf("|> ");
+  printf("\033[0m");
+  printf("- INPUT\n");
+  /* |< */
+  printf("\033[0;36m");
+  printf("|< ");
+  printf("\033[0m");
+  printf("- OUTPUT\n");
+  /* @ */
+  printf("\033[0;33m");
+  printf("@  ");
+  printf("\033[0m");
+  printf("- CURRENT MEMORY STATUS. DISPLAYED AS: ");
+  printf("\033[0;33m");
+  printf("value@adress\n");
+  printf("\033[0m");
+  /* ^ */
+  printf("\033[1;35m");
+  printf("^  ");
+  printf("\033[0m");
+  printf("- CURRENT POINTER POSITION\n");
+  
+  printf("\nUSE q OR CTRL-C TO QUIT\n\nEXECUTE WITH ENTER\n---\n");
 }
 
 

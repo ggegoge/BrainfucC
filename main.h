@@ -2,7 +2,7 @@
 #define EXPRESSIONS_H_
 
 
-#define SIZE 300000000
+#define SIZE 30000
 
 
 /* run.c */
@@ -11,6 +11,7 @@ void from_cmnd(char * p, char ** source);
 
 /* console.c */
 void interpreter(char memory[SIZE]);
+void intro(void);
 void clean_memory(char memory[SIZE]);
 void show_memory(char memory[SIZE]);
 
