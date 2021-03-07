@@ -6,13 +6,15 @@
 
 char memory[SIZE];  /* allocate cells */
 
-int main(int argc, char ** argv) {
+int main(int argc, char** argv)
+{
   if (argc < 2) {
     printf("USE `bf -h` FOR HELP\n");
     printf("------------\n");
     interpreter(memory);
     return 0;
   }
+
   /* options selected by adding '-' */
   if (argv[1][0] == '-') {
     /* help */
@@ -23,7 +25,7 @@ int main(int argc, char ** argv) {
       printf("C");
       printf("\033[0m");
       printf(" INTERPRETER\n");
-      
+
       printf("\033[0;33m");
       printf("copyright (c) 2020 test0wanie\n");
       printf("\033[0m");
@@ -42,7 +44,7 @@ int main(int argc, char ** argv) {
     /* execute from file */
     else if (argv[1][1] == 'f') {
       if (argc > 3)
-        from_file(memory, argv[2], (argv[3][0]=='-'));
+        from_file(memory, argv[2], (argv[3][0] == '-'));
       else
         from_file(memory, argv[2], 0);
     }
@@ -53,7 +55,7 @@ int main(int argc, char ** argv) {
   /* command passed in-line via the terminal */
   else
     from_cmnd(memory, &argv[1]);
-  
+
   printf("\nEND\n");
   return 0;
 }
