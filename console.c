@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #include "main.h"
 
@@ -23,7 +24,7 @@ void interpreter(char memory[SIZE])
     len = getline(&cmnd, &cmnd_len, stdin);
 
     /* check whether the command aint too long */
-    if (cmnd == NULL)
+    if (cmnd == NULL || errno == ENOMEM)
       exit(1);
 
     p = cmnd;

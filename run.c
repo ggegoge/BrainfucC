@@ -22,6 +22,8 @@ void from_file(char memory[SIZE], char* path, int show)
 
     if (buffer)
       fread (buffer, 1, length, f);
+    else
+      exit(1);
 
     fclose (f);
     buffer[length] = '\0';
