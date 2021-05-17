@@ -24,7 +24,7 @@ void interpreter(char memory[SIZE])
     len = getline(&cmnd, &cmnd_len, stdin);
 
     /* check whether the command aint too long */
-    if (cmnd == NULL || errno == ENOMEM)
+    if (cmnd == NULL || errno == ENOMEM || len == -1)
       exit(1);
 
     p = cmnd;
@@ -81,7 +81,7 @@ void interpreter(char memory[SIZE])
       show_error(cmnd, error);
       printf("\033[0m");
     }
-  } while (*cmnd != 'q');
+  } while (*cmnd != 'q' && len != -1 && !feof(stdin));
 
   free(cmnd);
 }
