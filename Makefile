@@ -20,5 +20,5 @@ main.o: main.c main.h
 run.o: run.c main.h
 
 clean:
-	-rm $(OBJS)
-	-rm bf
+	-rm -f $(OBJS)
+	-rm -f bf
