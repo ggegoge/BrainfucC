@@ -24,7 +24,7 @@ void interpreter(char memory[SIZE])
     len = getline(&cmnd, &cmnd_len, stdin);
 
     /* check whether the command aint too long */
-    if (errno == ENOMEM || len == -1)
+    if (errno == ENOMEM || errno == EOVERFLOW)
       exit(1);
 
     p = cmnd;
