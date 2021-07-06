@@ -16,7 +16,7 @@ interpreter written in C that can be used in an interactive way
 
 you can either use the plain executable file so do stuff like `./bf`
 or make yourself an **alias** in your shell. Something along the lines
-of: `alias bf="[absolute path]/bf/bf"` so that you can write `bf` in
+of: `alias bf="[absolute path]/bf"` so that you can write `bf` in
 your terminal anywhere you are and it will result in executing the
 compiled file provided under the absolute path. In the following
 paragraphs I shall use the aliased version but I guess you know the
@@ -25,14 +25,10 @@ difference.
 Though there is one issue - it's *plain terminal* so there's no using
 your arrows for navigating in the bf commandline. Fortunately you can
 use special packages by people who have already had that problem
-before. Just use the `rlwrap` that many people may have already
-installed or the ocaml based tool
-called [**ledit**](https://opam.ocaml.org/packages/ledit/) that
-basicaly serves the same exact purpose. Then your alias might look
-something like
+before. Just use the popular `rlwrap` tool.
 
 ```bash
-alias bf="ledit /[path]/bf/bf"
+alias bf="rlwrap /[path]/bf/bf"
 ```
 
 and now you can use arrows etc for navigation.
@@ -65,7 +61,8 @@ in order to simplify their life
   cells)
 - `!` -- print cells content numerically. Similar to `.` but it shows
   the true value not the coressponding ascii character
-  ```
+
+```
 |> ++++++[->++++[->++<]<]>>
 |< 
 @ 00@00 00@01 48@02 00@03 00@04 00@05 00@06...
@@ -79,6 +76,7 @@ in order to simplify their life
 @ 00@00 00@01 48@02 00@03 00@04 00@05 00@06...
               ^
 ```
+
 - `^` -- input a number. in its dual nature to `!` it allows you to
   input a number into the machine
 
