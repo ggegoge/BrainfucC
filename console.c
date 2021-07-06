@@ -23,7 +23,8 @@ void interpreter(char memory[SIZE])
     printf("\033[0m");
     fflush(stdout);
     len = getline(&cmnd, &cmnd_len, stdin);
-
+    if (len == -1)
+      break;
     /* check whether the command aint too long */
     if (errno == ENOMEM || errno == EOVERFLOW)
       exit(1);
@@ -54,7 +55,7 @@ void interpreter(char memory[SIZE])
         printf("\033[1;31m");
         printf("ERRONOUS COMMAND\n");
         printf("\033[0;31m");
-        show_error(cmnd - len, -len + 2);
+        show_error(cmnd, -len + 2);
         printf("\033[0m");
         i = 0;
       }
@@ -83,7 +84,7 @@ void interpreter(char memory[SIZE])
       show_error(cmnd, error);
       printf("\033[0m");
     }
-  } while (*cmnd != 'q' && len != -1 && !feof(stdin));
+  } while (len != -1 && *cmnd != 'q' && !feof(stdin));
 
   free(cmnd);
 }
