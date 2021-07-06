@@ -22,10 +22,10 @@
 
 char* command(char* p, char** source)
 {
-  while (**source != '\0' &&** source != ']') {
+  while (**source != '\0' && **source != ']') {
     /* skip coments all the way to the eoln/eof */
     if (**source == '#')
-      for (; (**source != '\n' &&** source != '\0'); ++*source);
+      for (; (**source != '\n' && **source != '\0'); ++*source);
 
     /* commends */
     if (**source == '-')
@@ -70,8 +70,8 @@ char* loop(char* p, char** source)
     p = command(p, source);
   }
 
-  /* jump all the way to the loop's end in case it doesnt even initialise */
-  /* if the loop run at least one time it should've been set at the end */
+  /* jump all the way to the loop's end in case it doesnt even initialise
+   * if the loop run at least one time it should've been set at the end */
   if (**source == '[')
     do {
       ++*source;

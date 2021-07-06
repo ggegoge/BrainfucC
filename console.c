@@ -24,7 +24,7 @@ void interpreter(char memory[SIZE])
     len = getline(&cmnd, &cmnd_len, stdin);
 
     /* check whether the command aint too long */
-    if (cmnd == NULL || errno == ENOMEM || len == -1)
+    if (errno == ENOMEM || len == -1)
       exit(1);
 
     p = cmnd;
@@ -131,7 +131,7 @@ void clean_memory(char memory[SIZE])
 }
 
 /* shows first 7 cells and then checks
-forward whether in +4 dist there is a non zero cell present */
+ * forward whether in +4 dist there is a non zero cell present */
 void show_memory(char memory[SIZE])
 {
   int i = 0;
