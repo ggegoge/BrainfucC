@@ -10,6 +10,7 @@ void interpreter(char memory[SIZE])
 {
   size_t cmnd_len = 0;
   char* cmnd = NULL;
+  char* src;
   char* p;
   int i = 0, j, len;
   int error;
@@ -28,6 +29,7 @@ void interpreter(char memory[SIZE])
       exit(1);
 
     p = cmnd;
+    src = cmnd;
 
     if (*cmnd == 'q')
       break;
@@ -44,7 +46,7 @@ void interpreter(char memory[SIZE])
       printf("\033[0m");
 
       /* exec */
-      p = command(memory + i, &cmnd);
+      p = command(memory + i, &src);
       i = p - memory;
 
       /* index out of range vel seg fault */
@@ -72,7 +74,7 @@ void interpreter(char memory[SIZE])
       printf("\033[0m");
 
       /* clean_memory(memory); */
-      cmnd = cmnd - len;
+      /* cmnd = cmnd - len; */
       printf("\n");
     } else {
       printf("\033[1;31m");
